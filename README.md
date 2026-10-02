@@ -1,48 +1,44 @@
 # 🎮 Tic Tac Toe
 
-A modern and interactive **Tic Tac Toe** game built using **HTML, CSS, and JavaScript**. The game supports both two-player and single-player modes, multiple AI difficulty levels, score tracking, sound effects, animations, player customization, responsive design, and dark/light mode.
+A modern and interactive **Tic Tac Toe** web game with AI gameplay, multiple difficulty levels, sound effects, animations, score tracking, player customization, and responsive design.
 
----
+## 🌐 Live Demo
+
+**Play the game online:**
+👉 [Tic Tac Toe — Live Demo](https://awesome-tic-tac-toe-verse.netlify.app/)
 
 ## ✨ Features
 
-* 🎮 Two-player mode
+* 👥 Two-player mode
 * 🤖 Single-player mode with AI
 * 🎯 Three AI difficulty levels:
 
   * Easy
   * Medium
   * Hard
-* 🏆 Score tracking for:
-
-  * Player X
-  * Player O / Computer
-  * Draws
-* 🔊 Sound effects
-* 🎨 Move and winning animations
-* 📱 Responsive design for mobile and tablet devices
-* 👤 Custom player names
-* 🌙 Dark mode
-* ☀️ Light mode
-* 🔄 New Round functionality
-* 🗑️ Reset Scores functionality
-* 🏅 Winning-cell highlighting
-* 🚫 Prevents invalid moves
-* 💾 Theme preference stored using Local Storage
-
----
+* 🧠 Hard mode uses the **Minimax algorithm**
+* 🏆 Score tracking for both players
+* 🔄 New Round and Reset Scores options
+* 🔊 Sound effects with sound toggle
+* ✨ Move and winner animations
+* 📱 Fully responsive design for mobile devices
+* 👤 Player name customization
+* 🌙 Dark/Light mode
+* 💾 Theme preference stored using `localStorage`
+* 🟩 Winning cells highlighted
+* 🚫 Invalid moves prevented
+* 🎨 Modern and clean UI
 
 ## 🛠️ Technologies Used
 
-* **HTML5** – Structure of the game
-* **CSS3** – Styling, animations, themes, and responsive design
-* **JavaScript (ES6+)** – Game logic, AI, scoring, sound effects, and interactivity
-* **Web Audio API** – Generates game sound effects
-* **Local Storage** – Stores the selected theme
+* **HTML5**
+* **CSS3**
+* **JavaScript**
+* **Web Audio API**
+* **LocalStorage**
+* **Minimax Algorithm**
 
----
-
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```text
 Tic-Tac-Toe/
@@ -53,319 +49,144 @@ Tic-Tac-Toe/
 └── README.md
 ```
 
----
-
 ## 🎮 Game Modes
 
 ### 👥 Two Players
 
 Two players can play against each other on the same device.
 
-```text
-Player X → Player O → Player X → ...
-```
-
-Player names can be customized before or during the game.
-
----
-
 ### 🤖 Play with AI
 
-In single-player mode:
+Play against the computer with three different difficulty levels.
 
-```text
-You       → X
-Computer  → O
-```
-
-Player X always starts the game.
-
-The computer automatically makes its move after the player's turn.
-
----
-
-## 🎯 AI Difficulty Levels
+## 🧠 AI Difficulty Levels
 
 ### 🟢 Easy
 
-The computer selects an available cell randomly.
+The AI makes random valid moves.
 
 ### 🟡 Medium
 
-The computer uses basic game strategy:
+The AI uses basic strategies such as:
 
-1. Try to win.
-2. Block the player's winning move.
-3. Choose the center.
-4. Choose a corner.
-5. Otherwise make a random move.
+* Winning when possible
+* Blocking the player's winning move
+* Choosing the center
+* Choosing corners
+* Making random moves when no strategic move is available
 
 ### 🔴 Hard
 
-The computer uses the **Minimax algorithm** to evaluate possible game states and select its move.
-
-This provides a much more strategic AI opponent.
-
----
+The AI uses the **Minimax algorithm** to evaluate possible moves and select the optimal move.
 
 ## 🏆 Score Tracking
 
 The game keeps track of:
 
-| Result   | Description                       |
-| -------- | --------------------------------- |
-| Player X | Number of rounds won by X         |
-| Player O | Number of rounds won by O         |
-| Draws    | Number of rounds ending in a draw |
+* Player X wins
+* Player O / Computer wins
+* Draws
 
-### New Round
+The **New Round** button starts another round while preserving the scores.
 
-The **New Round** button:
-
-* Clears the current board
-* Starts a new game
-* Keeps the existing scores
-
-### Reset Scores
-
-The **Reset Scores** button:
-
-* Resets Player X score
-* Resets Player O score
-* Resets draw count
-* Starts a new round
-
----
+The **Reset Scores** button resets the complete scoreboard.
 
 ## 👤 Player Name Customization
 
-Players can enter custom names instead of using the default names.
+Players can enter their own names before starting the game.
 
-For example:
-
-```text
-Player X → Avneel
-Player O → Rahul
-```
-
-The game status will then display:
-
-```text
-It's Avneel's turn
-```
-
-and after winning:
-
-```text
-🎉 Rahul wins!
-```
-
-When playing against the AI, Player O is automatically named:
-
-```text
-Computer
-```
-
----
+In AI mode, the second player is automatically assigned as **Computer**.
 
 ## 🔊 Sound Effects
 
-The game includes sound effects generated using the **Web Audio API**.
-
-Sounds are played for:
+The game provides sound feedback for different actions, including:
 
 * Player moves
-* Winning
+* Winning moves
 * Draws
 * Button interactions
 
-The sound can be enabled or disabled using the:
+A sound toggle is available to enable or disable game sounds.
 
-```text
-🔊 Sound On
-```
+## ✨ Animations
 
-button.
+The game includes animations for:
 
-When disabled:
-
-```text
-🔇 Sound Off
-```
-
-No external audio files are required.
-
----
-
-## 🎨 Animations
-
-The game includes several visual animations:
-
-### Move Animation
-
-A player's X or O symbol smoothly appears on the board.
-
-### Winning Animation
-
-The winning cells are highlighted and animated.
-
-### Status Animation
-
-Winner and draw messages receive a visual pop animation.
-
----
+* Player moves
+* Winning cells
+* Game results
+* UI interactions
 
 ## 🌙 Dark / Light Mode
 
-The game supports both:
+Users can switch between:
 
-### ☀️ Light Mode
+* ☀️ Light Mode
+* 🌙 Dark Mode
 
-A bright interface suitable for daytime use.
-
-### 🌙 Dark Mode
-
-A darker interface suitable for low-light environments.
-
-The selected theme is stored using **Local Storage**, so the preference remains after refreshing the page.
-
----
+The selected theme is saved using `localStorage`, so it remains available when the page is refreshed.
 
 ## 📱 Responsive Design
 
-The game is designed to work on:
+The interface adapts to different screen sizes, including:
 
-* 💻 Desktop
-* 💻 Laptop
-* 📱 Mobile
-* 📱 Tablet
+* Desktop
+* Tablet
+* Mobile
 
-The board automatically adjusts its size according to the available screen width.
+The game board and controls automatically adjust for smaller screens.
 
-The layout also changes for smaller screens to make the controls easier to use.
+## ▶️ How to Play
 
----
+1. Open the game.
+2. Select **Two Players** or **Play with AI**.
+3. If playing against AI, select a difficulty level.
+4. Enter player names.
+5. Player X starts the game.
+6. Click an empty cell to make a move.
+7. Get three of your symbols in a row to win.
+8. Use **New Round** to play again.
 
-## 🕹️ How to Play
+## 🏁 Winning Conditions
 
-### Two-Player Mode
+A player wins by placing three identical symbols in:
 
-1. Select **Two Players**.
-2. Enter player names if desired.
-3. Player X starts.
-4. Click an empty cell.
-5. Player O takes the next turn.
-6. Continue until one player wins or the game ends in a draw.
+* A horizontal row
+* A vertical column
+* A diagonal
 
-### AI Mode
+There are **8 possible winning combinations** on the 3×3 board.
 
-1. Select **Play with AI**.
-2. Select a difficulty level.
-3. Enter your name.
-4. Player X starts.
-5. Make your move.
-6. The computer automatically responds.
-7. Continue until the game ends.
-
----
-
-## 🏅 Winning Conditions
-
-A player wins when they place three identical symbols in:
-
-### Row
-
-```text
-X | X | X
----------
-  | O |  
----------
-  |   |
-```
-
-### Column
-
-```text
-X | O |
----------
-X |   |
----------
-X |   |
-```
-
-### Diagonal
-
-```text
-X | O |
----------
-  | X |
----------
-  |   | X
-```
-
-There are **8 possible winning combinations**:
-
-* 3 rows
-* 3 columns
-* 2 diagonals
-
----
-
-## 🚀 How to Run
+## 🚀 Run Locally
 
 No additional libraries or dependencies are required.
 
-### 1. Clone the Repository
+Clone the repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/avneelsingh/Tic-Tac-Toe
 ```
 
-### 2. Navigate to the Project
+Navigate to the project directory:
 
 ```bash
 cd Tic-Tac-Toe
 ```
 
-### 3. Open the Game
+Open `index.html` in your browser.
 
-Open:
+Alternatively, use **VS Code Live Server** for a better development experience.
 
-```text
-index.html
-```
+## 🌐 Live Website
 
-in any modern web browser.
+You can play the deployed version here:
 
-You can also use **VS Code Live Server** for development.
-
----
-
-## 🌐 Browser Support
-
-The project works in modern browsers that support:
-
-* HTML5
-* CSS3
-* JavaScript ES6+
-* Web Audio API
-* Local Storage
-
-Recommended browsers:
-
-* Google Chrome
-* Microsoft Edge
-* Mozilla Firefox
-* Safari
-
----
+👉 **https://awesome-tic-tac-toe-verse.netlify.app/**
 
 ## 👨‍💻 Author
 
 **Avneel Singh**
 
----
-
 ## 📄 License
 
-This project is created for learning and educational purposes.
+This project is open-source and available for educational and personal use.
