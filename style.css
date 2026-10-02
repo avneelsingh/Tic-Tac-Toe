@@ -1,0 +1,519 @@
+/* ==============================
+   GLOBAL
+============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #eef5ff;
+  --container: #ffffff;
+  --card: #f8fafc;
+  --text: #1e293b;
+  --secondary-text: #64748b;
+  --border: #cbd5e1;
+  --cell-hover: #f1f5f9;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --x-color: #ef4444;
+  --o-color: #2563eb;
+  --success: #16a34a;
+  --shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+}
+
+body.dark {
+  --background: #0f172a;
+  --container: #1e293b;
+  --card: #263449;
+  --text: #f8fafc;
+  --secondary-text: #cbd5e1;
+  --border: #475569;
+  --cell-hover: #334155;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --x-color: #f87171;
+  --o-color: #60a5fa;
+  --success: #4ade80;
+  --shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, var(--background), var(--container));
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 15px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ==============================
+   MAIN CONTAINER
+============================== */
+
+#game {
+  width: 100%;
+  max-width: 750px;
+  background: var(--container);
+  padding: 35px;
+  border-radius: 25px;
+  box-shadow: var(--shadow);
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 52px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--secondary-text);
+  font-size: 16px;
+}
+
+.icon-btn {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--text);
+  font-size: 21px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.icon-btn:hover {
+  transform: rotate(20deg) scale(1.05);
+}
+
+/* ==============================
+   SETTINGS
+============================== */
+
+.settings {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.setting-group {
+  flex: 1;
+}
+
+.setting-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 7px;
+  color: var(--secondary-text);
+}
+
+.setting-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+}
+
+.setting-group select:focus {
+  border-color: var(--primary);
+}
+
+
+/* ==============================
+   PLAYERS
+============================== */
+
+.players {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  gap: 15px;
+  align-items: stretch;
+  margin-bottom: 25px;
+}
+
+.player-card {
+  background: var(--card);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.player-card.active {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.player-symbol {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.x-symbol {
+  color: var(--x-color);
+}
+
+.o-symbol {
+  color: var(--o-color);
+}
+
+.player-card input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--secondary-text);
+}
+
+.score strong {
+  color: var(--text);
+  font-size: 20px;
+}
+
+/* DRAW */
+
+.draw-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.draw-symbol {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.draw-title {
+  font-size: 13px;
+  color: var(--secondary-text);
+  margin-bottom: 5px;
+}
+
+.draw-card strong {
+  font-size: 20px;
+}
+
+/* ==============================
+   STATUS
+============================== */
+
+#status {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  min-height: 30px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+#status.winner {
+  color: var(--success);
+  animation: statusPop 0.5s ease;
+}
+
+#status.draw {
+  color: var(--primary);
+  animation: statusPop 0.5s ease;
+}
+
+@keyframes statusPop {
+  0% {
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ==============================
+   BOARD
+============================== */
+
+.board {
+  width: 450px;
+  height: 450px;
+  margin: 0 auto 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.cell {
+  border: 2px solid var(--border);
+  border-radius: 15px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 95px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.cell:hover:not(:disabled) {
+  background: var(--cell-hover);
+  transform: scale(1.02);
+}
+
+.cell:disabled {
+  cursor: not-allowed;
+}
+
+.cell.x {
+  color: var(--x-color);
+}
+
+.cell.o {
+  color: var(--o-color);
+}
+
+/* New move animation */
+.cell.move {
+  animation: moveIn 0.25s ease;
+}
+
+@keyframes moveIn {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Winning cells */
+
+.cell.winner {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
+  animation: winnerPulse 0.8s infinite alternate;
+}
+
+@keyframes winnerPulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.primary-btn, .secondary-btn, .sound-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 13px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: white;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: var(--card);
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+
+.secondary-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ==============================
+   SOUND
+============================== */
+
+.sound-control {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.sound-btn {
+  background: transparent;
+  color: var(--secondary-text);
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+  text-align: center;
+  margin-top: 25px;
+  color: var(--secondary-text);
+  font-size: 13px;
+}
+
+/* ==============================
+   HIDDEN
+============================== */
+
+.hidden {
+  display: none !important;
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 700px) {
+
+  body {
+    padding: 15px;
+  }
+
+  #game {
+    padding: 25px 15px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .players {
+    grid-template-columns: 1fr 75px 1fr;
+    gap: 8px;
+  }
+
+  .player-card {
+    padding: 10px 6px;
+  }
+
+  .player-card input {
+    font-size: 13px;
+  }
+
+  .score {
+    font-size: 12px;
+  }
+
+  .board {
+    width: min(90vw, 400px);
+    height: min(90vw, 400px);
+  }
+
+  .cell {
+    font-size: clamp(55px, 20vw, 85px);
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .game-header {
+    align-items: center;
+  }
+
+  .settings {
+    flex-direction: column;
+  }
+
+  .players {
+    grid-template-columns: 1fr 65px 1fr;
+  }
+
+  .player-symbol {
+    font-size: 24px;
+  }
+
+  .draw-title {
+    font-size: 11px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .primary-btn, .secondary-btn {
+    width: 100%;
+  }
+
+  #status {
+    font-size: 19px;
+  }
+
+}

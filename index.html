@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="game">
+
+    <!-- Header -->
+    <header class="game-header">
+      <div>
+        <h1>Tic Tac Toe</h1>
+        <p class="subtitle">Classic game with a modern touch</p>
+      </div>
+
+      <!-- Theme Button -->
+      <button id="themeBtn" class="icon-btn" title="Toggle theme">
+        🌙
+      </button>
+
+    </header>
+
+    <!-- Game Settings -->
+    <section class="settings">
+
+      <!-- Game Mode -->
+      <div class="setting-group">
+
+        <label for="gameMode">
+          Game Mode
+        </label>
+
+        <select id="gameMode">
+          <option value="human">
+            Two Players
+          </option>
+          <option value="ai">
+            Play with AI
+          </option>
+        </select>
+
+      </div>
+
+      <!-- Difficulty -->
+      <div class="setting-group" id="difficultyContainer">
+        <label for="difficulty">
+          Difficulty
+        </label>
+
+        <select id="difficulty">
+          <option value="easy">
+            Easy
+          </option>
+          <option value="medium">
+            Medium
+          </option>
+          <option value="hard">
+            Hard
+          </option>
+        </select>
+
+      </div>
+
+    </section>
+
+    <!-- Player Names -->
+    <section class="players">
+
+      <!-- Player X -->
+      <div class="player-card active" id="playerXCard">
+        <div class="player-symbol x-symbol">
+          X
+        </div>
+
+        <input
+          type="text"
+          id="playerXName"
+          value="Player X"
+          maxlength="15"
+          aria-label="Player X name"
+        />
+
+        <div class="score">
+          <span>Score</span>
+          <strong id="xScore">0</strong>
+        </div>
+
+      </div>
+
+      <!-- Draw -->
+      <div class="draw-card">
+
+        <div class="draw-symbol">
+          =
+        </div>
+
+        <div class="draw-title">
+          Draws
+        </div>
+
+        <strong id="drawScore">
+          0
+        </strong>
+
+      </div>
+
+      <!-- Player O -->
+      <div class="player-card" id="playerOCard">
+
+        <div class="player-symbol o-symbol">
+          O
+        </div>
+
+        <input
+          type="text"
+          id="playerOName"
+          value="Player O"
+          maxlength="15"
+          aria-label="Player O name"
+        />
+
+        <div class="score">
+          <span>Score</span>
+          <strong id="oScore">0</strong>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Game Status -->
+    <div id="status">
+      It's Player X's turn
+    </div>
+
+    <!-- Board -->
+    <main class="board" id="board">
+
+      <button class="cell" data-index="0"></button>
+      <button class="cell" data-index="1"></button>
+      <button class="cell" data-index="2"></button>
+
+      <button class="cell" data-index="3"></button>
+      <button class="cell" data-index="4"></button>
+      <button class="cell" data-index="5"></button>
+
+      <button class="cell" data-index="6"></button>
+      <button class="cell" data-index="7"></button>
+      <button class="cell" data-index="8"></button>
+
+    </main>
+
+    <!-- Game Buttons -->
+    <div class="buttons">
+
+      <button
+        id="resetBtn"
+        class="primary-btn"
+      >
+        🔄 New Round
+      </button>
+
+      <button
+        id="resetScoreBtn"
+        class="secondary-btn"
+      >
+        🗑️ Reset Scores
+      </button>
+
+    </div>
+
+    <!-- Sound -->
+    <div class="sound-control">
+
+      <button
+        id="soundBtn"
+        class="sound-btn"
+      >
+        🔊 Sound On
+      </button>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        Tic Tac Toe. Have Fun!
+      </p>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
